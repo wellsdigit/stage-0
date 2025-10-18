@@ -34,6 +34,8 @@ It was created as part of the **Frontend Wizards – Stage 0 Challenge** and inc
 
 ### 🌍 Live Demo
 > https://wellsdigit.github.io/stage-0
+> <img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/59ecea2a-122c-4196-86d4-bc7ce8df0ce1" />
+
 
 ---
 
