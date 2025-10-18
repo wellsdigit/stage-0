@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card - Stage 0</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f6f8fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      article {
+        background: white;
+        border-radius: 12px;
+        max-width: 700px;
+        width: 100%;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        padding-top: 30px;
+        text-align: center;
+      }
+      .card-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        font-size: 14px;
+      }
+      figure {
+        margin: 0;
+        text-align: center;
+      }
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: #0077ff 6.5px solid;
+      }
+      h2 {
+        color: #0077ff;
+        font-size: 1.6rem;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 16px;
+        padding: 0;
+        justify-content: center;
+      }
+      nav a {
+        text-decoration: none;
+        color: #0077ff;
+        font-weight: semi-bold;
+        font-size: 14px;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      
+      .card-content p {
+        color: #555;
+      }
+
+      .myfacts {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .myfacts section {
+        border-radius: 5px;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .myfacts section h4 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .myfacts section li {
+        margin-bottom: 2px;
+        color: #7a7a7a;
+      }
+      section ul {
+        padding-left: 20px;
+      }
+      .time {
+        padding: 4px 15px;
+        background: #0077ff20;
+        border-radius: 25px;
+        color: #0077ff;
+      }
+      @media (min-width: 768px) {
+        article {
+          flex-direction: row;
+          padding: 40px;
+          text-align: left;
+        }
+        .myfacts section {
+          width: 180px;
+          text-align: left;
+        }
+        figure {
+          padding: 20px;
+        }
+        .card-content {
+          flex: 1;
+          justify-content: center;
+        }
+        nav ul{
+          justify-content: flex-start;
+        }
+      }
+    </style>
+
+     <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  </head>
+  <body>
+    <article data-testid="test-profile-card">
+      <figure>
+        <img
+          src="https://i.ibb.co/XrD0Lg1X/1757537447840.jpg"
+          alt="Profile photo of Godwin Salami"
+          data-testid="test-user-avatar"
+        />
+      </figure>
+
+      <div class="card-content">
+        <header>
+          <h2 data-testid="test-user-name">Godwin Salami</h2>
+        </header>
+
+        <p data-testid="test-user-bio">
+          Curious frontend developer who loves building clean and functional
+          user interfaces.
+        </p>
+
+        <p class="c-time">
+          Current time (ms):
+          <span class="time" data-testid="test-user-time" id="time"></span>
+        </p>
+
+        <nav aria-label="Social Links" data-testid="test-user-social-links">
+          <ul>
+            <li>
+              <a
+                href="https://github.com/wellsdigit"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-github"
+                > <i class="fab fa-github"></i> GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://x.com/wellsdigit_fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-twitter"
+                ><i class="fab fa-x-twitter"></i> Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/wellshub"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-linkedin"
+                ><i class="fab fa-linkedin"></i> LinkedIn</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="myfacts">
+          <section>
+            <h4>Hobbies</h4>
+            <ul data-testid="test-user-hobbies">
+              <li>Reading sci-fi</li>
+              <li>Playing chess</li>
+              <li>Hiking adventures</li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>Dislikes</h4>
+            <ul data-testid="test-user-dislikes">
+              <li>Bad WiFi</li>
+              <li>Messy code</li>
+              <li>Cold coffee</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <script>
+      function updateTime() {
+        document.getElementById("time").textContent = Date.now();
+      }
+      updateTime(); 
+      setInterval(updateTime, 5000);
+    </script>
+  </body>
+</html>
