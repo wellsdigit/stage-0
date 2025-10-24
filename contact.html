@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Godwin Salami</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus {
+      border-color: #0077ff;
+      outline: none;
+    }
+    button {
+      background: #0077ff;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #005fcc;
+    }
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: -10px;
+      margin-bottom: 4px;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      padding: 0;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      width: 80%; 
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0077ff;
+      font-weight: semi-bold;
+      font-size: 14px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    
+
+
+  <form id="contact-form" novalidate>
+    <!-- ✅ New Page Navigation -->
+        <nav aria-label="Page Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- ✅ End Navigation -->
+    <h2>Contact Us</h2>
+
+    <div>
+      <label for="name">Full Name</label>
+      <input id="name" name="name" type="text" data-testid="test-contact-name" aria-describedby="error-name" />
+      <p class="error" id="error-name" data-testid="test-contact-error-name"></p>
+    </div>
+
+    <div>
+      <label for="email">Email Address</label>
+      <input id="email" name="email" type="email" data-testid="test-contact-email" aria-describedby="error-email" />
+      <p class="error" id="error-email" data-testid="test-contact-error-email"></p>
+    </div>
+
+    <div>
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text" data-testid="test-contact-subject" aria-describedby="error-subject" />
+      <p class="error" id="error-subject" data-testid="test-contact-error-subject"></p>
+    </div>
+
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" data-testid="test-contact-message" aria-describedby="error-message"></textarea>
+      <p class="error" id="error-message" data-testid="test-contact-error-message"></p>
+    </div>
+
+    <button type="submit" data-testid="test-contact-submit">Submit</button>
+
+    <p id="success-message" class="success" data-testid="test-contact-success" style="display:none;">
+      ✅ Thank you! Your message has been submitted successfully.
+    </p>
+    
+  </form>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      // clear previous messages
+      document.querySelectorAll('.error').forEach(el => el.textContent = '');
+      successMsg.style.display = 'none';
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const subject = form.subject.value.trim();
+      const message = form.message.value.trim();
+
+      // validation
+      if (!name) {
+        valid = false;
+        document.getElementById('error-name').textContent = 'Full name is required.';
+      }
+
+      const emailRegex = /^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$/i;
+      if (!email) {
+        valid = false;
+        document.getElementById('error-email').textContent = 'Email is required.';
+      } else if (!emailRegex.test(email)) {
+        valid = false;
+        document.getElementById('error-email').textContent = 'Please enter a valid email address.';
+      }
+
+      if (!subject) {
+        valid = false;
+        document.getElementById('error-subject').textContent = 'Subject is required.';
+      }
+
+      if (!message) {
+        valid = false;
+        document.getElementById('error-message').textContent = 'Message is required.';
+      } else if (message.length < 10) {
+        valid = false;
+        document.getElementById('error-message').textContent = 'Message must be at least 10 characters.';
+      }
+
+      if (valid) {
+        form.reset();
+        successMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

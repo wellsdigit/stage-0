@@ -70,7 +70,7 @@
       nav a:hover {
         text-decoration: underline;
       }
-      
+
       .card-content p {
         color: #555;
       }
@@ -122,15 +122,17 @@
           flex: 1;
           justify-content: center;
         }
-        nav ul{
+        nav ul {
           justify-content: flex-start;
         }
       }
     </style>
 
-     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <article data-testid="test-profile-card">
@@ -165,7 +167,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="test-user-social-github"
-                > <i class="fab fa-github"></i> GitHub</a
+                ><i class="fab fa-github"></i> GitHub</a
               >
             </li>
             <li>
@@ -188,6 +190,16 @@
             </li>
           </ul>
         </nav>
+
+        <!-- ✅ New Page Navigation -->
+        <nav aria-label="Page Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- ✅ End Navigation -->
 
         <div class="myfacts">
           <section>
@@ -215,7 +227,7 @@
       function updateTime() {
         document.getElementById("time").textContent = Date.now();
       }
-      updateTime(); 
+      updateTime();
       setInterval(updateTime, 5000);
     </script>
   </body>
